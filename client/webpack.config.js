@@ -11,10 +11,7 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js',
-      database: './src/js/database.js',
-      editor: './src/js/editor.js',
-      header: './src/js/header.js'
+      install: './src/js/install.js'      
     },
     output: {
       filename: '[name].bundle.js',
@@ -23,12 +20,12 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'JATE'
+        title: 'Text-editor'
       }),
 
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
 
       new WebpackPwaManifest({
@@ -45,7 +42,7 @@ module.exports = () => {
           {
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 384, 512],
-            destination: path.resolve('assets', 'icons'),
+            destination: path.join('assets', 'icons'),
           },
         ],
       }),
